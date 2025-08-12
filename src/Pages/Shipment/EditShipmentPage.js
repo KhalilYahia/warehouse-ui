@@ -247,6 +247,7 @@ const EditShipmentPage= () =>  {
     <button className="btn btn-archive" onClick={() => {handleSubmit_Unsign()}}>Отозвать</button></> 
    ):(
    <> <button className="btn btn-add" onClick={() => {handleSubmit()}}>Сохранить</button>
+   <button className="btn btn-work" onClick={() => {handleChange('isSigned',true); }}>Сохранить и подписать</button>
      <button className="btn btn-delete" onClick={() => {handleDelete();}}>Удалить</button></> 
    )} 
 
