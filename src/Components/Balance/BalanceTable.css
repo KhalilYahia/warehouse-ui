@@ -1,0 +1,76 @@
+.table-container {
+
+  overflow-x: auto; /* Mobile scroll */
+  padding: 20px 0px;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  font-family: Arial, sans-serif;
+}
+
+/* Table header */
+.custom-table thead {
+  background-color: #2d6cdf;
+  color: white;
+}
+
+.custom-table th {
+  padding: 12px 15px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Table body */
+.custom-table td {
+  padding: 12px 15px;
+  font-size: 14px;
+  color: #333;
+text-align: center;
+}
+
+/* Zebra stripes */
+.custom-table tbody tr:nth-child(odd) {
+  background-color: #f8f9fc;
+}
+
+/* Hover effect */
+.custom-table tbody tr:hover {
+  background-color: #e9f0ff;
+  transition: background-color 0.3s ease;
+}
+
+/* Rounded corners */
+.custom-table th:first-child {
+  border-top-left-radius: 12px;
+}
+.custom-table th:last-child {
+  border-top-right-radius: 12px;
+}
+.custom-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+.custom-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+td label {
+    padding: 8px;
+    border-radius: 5px;
+    color: white;
+}
+
+/* Responsive font sizes */
+@media (max-width: 768px) {
+  .custom-table th,
+  .custom-table td {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

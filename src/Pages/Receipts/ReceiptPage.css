@@ -1,0 +1,49 @@
+.form-control {
+  width: 100%;
+  padding: 9px 14px;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.form-control:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.4);
+}
+
+.form-control::placeholder {
+  color: #aaa;
+}
+
+.form-control[disabled] {
+  background-color: #f8f9fa;
+  cursor: not-allowed;
+}
+.date-period {
+  align-items: center;
+  gap: 8px;
+}
+
+.date-period label {
+  margin-right: 10px;
+  font-weight: 500;
+}
+
+.date-period input.form-control {
+  width: calc(50% - 10px);
+  padding: 9px 10px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.date-period span {
+  font-size: 18px;
+  color: #888;
+}

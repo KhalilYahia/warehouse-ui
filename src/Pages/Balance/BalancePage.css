@@ -1,0 +1,38 @@
+.filter-container-kh {
+    padding: 15px 15px 50px 15px;
+    border-radius: 12px;
+    border: solid 2px #b639d5;
+    position: relative;;
+    margin-bottom: 20px;
+}
+
+.filter-kh {
+display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+.filter-kh .single-filter {
+    min-width: calc(50% - 5px);
+   flex-grow: 1;
+}
+.filter-kh label {
+    display: block;
+    margin-bottom: 5px;
+}
+.filter-container-kh button {
+    height: 38px;
+    width: 100px;
+    border-radius: 5px;
+    border-color: #2d6cdf;
+    background-color: #2d6cdf;
+    color: white;
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+}
+.filter-container-kh button:hover {
+    cursor: pointer;
+    background-color: #2556b3;
+}
