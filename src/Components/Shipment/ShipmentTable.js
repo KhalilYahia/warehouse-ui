@@ -12,6 +12,7 @@ function ShipmentTable({data}) {
   date.getFullYear();
   }
 
+  
 
   return (
    <div className="table-container">

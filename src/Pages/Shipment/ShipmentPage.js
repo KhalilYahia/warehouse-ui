@@ -7,6 +7,7 @@ import axios from 'axios';
 import { ApiURL } from '../../App';
 import { toast, ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import ReactPaginate from "react-paginate";
 
 function ShipmentPage() {
 
@@ -24,16 +25,27 @@ function ShipmentPage() {
     outboundDocumentIds:[],
     clientIds:[],
     resourceIds:[],
-    unitIds:[]
+    unitIds:[],
+    page:1
   });
  
   const [Clientoptions, setClientoptions] = useState([]);
   const [Resourceoptions, setResourceoptions] = useState([]);
   const [Unitsoptions, setUnitsoptions] = useState([]);
   const [DocumentsNumberoptions, setDocumentsNumberoptions] = useState([]);
- 
+  const [page, setPage] = useState(0);
+  const [Totalpages, setTotalpages] = useState(0);
+  const itemsPerPage = 50;
+
+  const handlePageClick = ({ selected }) => {
+    setPage(selected);
+    handleChange('page',selected);
+    let sended_formData = {...formData};
+    sended_formData.page = selected;
+    handleSubmit(sended_formData);
+  };
    useEffect(() => {
-     handleSubmit();
+     handleSubmit(formData);
      const fetchData = async () => {       
          axios.get(ApiURL +'Receipt/GetAllFitters').then((data)=>{   
           console.log(data.data);
@@ -110,10 +122,10 @@ function ShipmentPage() {
     });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (sended_formData) => {
       setLoading(true);
       try {
-      const res = await axios.post(ApiURL+'Shipment/Search', formData, {
+      const res = await axios.post(ApiURL+'Shipment/Search', sended_formData, {
         headers: {
           'Accept': 'text/plain',
           'Content-Type': 'application/json'
@@ -123,8 +135,10 @@ function ShipmentPage() {
       if(res.status===200)
       {
         setLoading(false);
-        console.log(res);
-        setresults(res.data);
+       // console.log(res);
+        setresults(res.data.item3);
+        setPage(res.data.item2);
+        setTotalpages(res.data.item1);
       }
           
     } catch (error) {
@@ -151,6 +165,8 @@ function ShipmentPage() {
   return d.toISOString().split("T")[0];
 }
 
+ 
+
   return (
     <div>
       <h1>Отгрузки</h1>
@@ -175,7 +191,7 @@ function ShipmentPage() {
       />
     </div>
       </div>
-      <div className='single-filter'>
+      {/* <div className='single-filter'>
         <label>
         Номер отгрузки
       </label>
@@ -190,7 +206,7 @@ function ShipmentPage() {
         placeholder="Search or select..."
         />
      
-      </div>
+      </div> */}
     <div className='single-filter'>
         <label>
         Клиент
@@ -239,12 +255,20 @@ function ShipmentPage() {
      
       </div>
       </div>
-      <button onClick={() => {handleSubmit();}}>Применить</button>
+      <button onClick={() => {handleSubmit(formData);}}>Применить</button>
       
       </fieldset>
        <button className="btn btn-add" onClick={() => {navigate('/Shipments/addShipment')}}>+ Добавить</button>
         
       <ShipmentTable data={results}/>
+        <ReactPaginate
+        pageCount={Totalpages}
+        onPageChange={handlePageClick}
+        containerClassName="containerpaging-kh"
+        activeClassName="font-bold"
+    
+      />
+
       <ToastContainer />
       {loading && <div className='loader-parent'> <div className="loader"></div></div>}
     </div>

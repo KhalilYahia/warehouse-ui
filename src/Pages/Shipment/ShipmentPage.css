@@ -1,0 +1,33 @@
+
+.containerpaging-kh {
+        list-style: none;
+        display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 0.7em;
+}
+
+.containerpaging-kh li {
+  
+    border-radius: 5px;
+    text-align: center;
+    align-content: center;
+
+}
+.containerpaging-kh .font-bold 
+{
+     border: solid #000000 1px;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+.containerpaging-kh li:hover {
+    cursor: pointer;
+}
+.containerpaging-kh .disabled{
+    color: #939393;
+}
+.containerpaging-kh .disabled:hover {
+    cursor: initial;
+}
